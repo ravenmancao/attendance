@@ -58,7 +58,7 @@ namespace attendance
                     {
                         excused++;
                     }
-                    Console.WriteLine(i + 1) + "." + students[i];
+                    Console.WriteLine((i + 1) + ". " + students[i]);
                     Console.WriteLine("Present: " + present);
                     Console.WriteLine("Absent: " + absent);
                     Console.WriteLine("Excused: " + excused);
