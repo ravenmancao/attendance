@@ -13,28 +13,28 @@ namespace attendance
 "Juan Luna","Randy De Guzman","Jayson De Guzman","Dianne De Guzman","Mitch De Guzman"
             };
 
-            string[] attendance =
-             {
-                "P","P","A","P","P",
-                "P","A","P","P","P",
-                "A","P","P","E","P",
-                "P","P","P","P","P",
-                "P","P","P","E","P",
-                "P","P","P","P","A",
-                "P","P","P","P","P",
-                "P","P","P","P","P",
-                "P","P","A","P","E",
-                "P","P","P","E","P",
-                "E","E","P","P","P",
-                "P","P","P","P","P",
-                "P","P","P","P","P",
-                "P","A","E","P","P",
-                "P","A","A","A","P",
+            string[,] attendance ={
+
+               { "P","P","A","P","P" },
+               { "P","A","P","P","P" },
+              { "A","P","P","E","P" },
+               { "P","P","P","P","P" },
+              { "P","P","P","E","P" },
+               { "P","P","P","P","A" },
+               { "P","P","P","P","P"},
+               { "P","P","P","P","P"},
+               { "P","P","A","P","E"},
+               { "P","P","P","E","P"},
+               { "E","E","P","P","P"},
+               { "P","P","P","P","P"},
+               { "P","P","P","P","P"},
+               { "P","A","E","P","P"},
+               { "P","A","A","A","P"},
              };
 
             DisplayWeeklyPerStudent(students, attendance);
         }
-        static void DisplayWeeklyPerStudent(List<string> students, string[] attendance)
+        static void DisplayWeeklyPerStudent(List<string> students, string[,]attendance)
         {
             Console.WriteLine("====WEEKLY ATTENDANCE PER STUDENT====");
             Console.WriteLine("-------------------------------------------------------------\n");
