@@ -10,19 +10,22 @@ namespace attendance
     {
         static void Main()
         {
+
+            //DINI-DEFINE ANG LISTA SA MGA STUDENTS AND ANG 2D ARRAY PARA SA ATTENDANCE NILA.
             List<string> students = new List<string>()
             {
 "Ralph Monzon","Brix Sochaco","Manu Masangkay","Jen Villareal","Josh Dator","Gege Graban","Abby Almadin","Laurent Dimapelis","Eichi Aquino","Rave Mancao",
 "Mitch Pichi","Shielo Resaba","Keichiro Shin","Jewell Gestoso","Usher Magbanua"
             };
 
+            //DINI-DEFINE ANG ATTENDANCE NG BAWAT STUDENT SA BAWAT ARAW, GINAMIT ANG "P" PARA SA PRESENT, "A" PARA SA ABSENT, AND "E" PARA SA EXCUSED.
             string[,] attendance ={
 
                { "P","P","A","E","E" },
                { "P","A","P","P","P" },
-              { "A","P","P","E","P" },
+               { "A","P","P","E","P" },
                { "P","P","P","P","P" },
-              { "P","P","P","E","P" },
+               { "P","P","P","E","P" },
                { "P","P","P","P","A" },
                { "P","P","E","E","P"},
                { "P","P","P","P","P"},
@@ -36,15 +39,15 @@ namespace attendance
              };
 
             DisplayWeeklyPerStudent(students, attendance);
-
-            //sa bahay kona po ayusin tong  overall summary.
-            DisplayOverallSummary(attendance);
+            DisplayOverallSummary(students,attendance);
         }
 
+        //DINI-DISPLAY NYA ANG ATTENDANCE NG BAWAT STUDENT SA BAWAT ARAW AND CALCULATE ANG PRESENT, ABSENT, & EXCUSED.
         static void DisplayWeeklyPerStudent(List<string> students, string[,] attendance)
         {
+            Console.WriteLine("RAVE'S UNIVERSITY BIÑAN CAMPUS\n");
             Console.WriteLine("| WEEKLY ATTENDANCE PER STUDENT |");
-            Console.WriteLine("-------------------------------------------------------------\n");
+            Console.WriteLine("---------------------------------\n");
 
             for (int i = 0; i < students.Count; i++)
             {
@@ -57,7 +60,8 @@ namespace attendance
                     else if (attendance[i, j] == "E") { excused++; }
                 }
 
-                    double percentage = (double)present / attendance.GetLength(1) * 100;
+                //KINI- CALCULATE ANG PERCENTAGE NG ATTENDANCE NG BAWAT STUDENT AND DETERMINE ANG REMARKS BASED ON THE PERCENTAGE.
+                double percentage = (double)present / attendance.GetLength(1) * 100;
                   string remark = percentage switch
                     {
                         >= 100 => "Excellent",
@@ -70,12 +74,18 @@ namespace attendance
                     Console.WriteLine("Present: " + present);
                     Console.WriteLine("Absent: " + absent);
                     Console.WriteLine("Excused: " + excused);
-                    Console.WriteLine("Rate: " + percentage.ToString("F2") + "%");
-                    Console.WriteLine("-------------------------");
+
+
+                //DINI-DISPLAY NYA ANG PERCENTAGE AND REMARKS NG BAWAT STUDENT.
+                Console.WriteLine("Rate: " + percentage.ToString("F2") + "%");
+                Console.WriteLine("Remark: " + remark);
+                Console.WriteLine("--------------------");
 
                 }
             }
-            static void DisplayOverallSummary(List<String> students, String[,] attendance)
+
+        //KINOKOMPYLE NYA ANG TOTAL PRESENT, ABSENT, AND EXCUSED NG LAHAT NG STUDENTS PARA SA OVERALL SUMMARY.
+        static void DisplayOverallSummary(List<String> students, String[,] attendance)
             {
                 int totalPresent = 0, totalAbsent = 0, totalExcused = 0;
 
@@ -88,8 +98,10 @@ namespace attendance
                         else if (attendance[i, j] == "E") totalExcused++;
                     }
                 }
-                Console.WriteLine("| OVERALL ATTENDANCE SUMMARY |");
-                Console.WriteLine("-----------------------------\n");
+
+            //DINI-DISPLAY NYA ANG OVERALL SUMMARY NG ATTENDANCE.
+            Console.WriteLine("\n| OVERALL ATTENDANCE SUMMARY |");
+                Console.WriteLine("------------------------------\n");
                 Console.WriteLine("Total Present: " + totalPresent);
                 Console.WriteLine("Total Absent: " + totalAbsent);
                 Console.WriteLine("Total Excused: " + totalExcused);
