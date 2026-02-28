@@ -36,6 +36,8 @@ namespace attendance
              };
 
             DisplayWeeklyPerStudent(students, attendance);
+
+            //sa bahay kona po ayusin tong  overall summary.
             DisplayOverallSummary(attendance);
         }
 
