@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\attendanceAppService\attendanceAppService.csproj" />
+    <ProjectReference Include="..\attendanceDataService\attendanceDataService.csproj" />
+    <ProjectReference Include="..\AttendanceModels\AttendanceModels.csproj" />
   </ItemGroup>
 
 </Project>

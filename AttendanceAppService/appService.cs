@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using AttendanceModels;
 
 namespace attendanceAppService
 {
     public class AppService
     {
-        public void DisplayWeekly(List<string> students, string[,] attendance)
+        public void DisplayWeekly(List<Student> students, AttendanceRecord attendance)
         {
             Console.WriteLine("RAVE'S UNIVERSITY BIÑAN CAMPUS\n");
             Console.WriteLine("| WEEKLY ATTENDANCE PER STUDENT |");
@@ -16,14 +16,15 @@ namespace attendanceAppService
             {
                 int present = 0, absent = 0, excused = 0;
 
-                for (int j = 0; j < attendance.GetLength(1); j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    if (attendance[i, j] == "P") present++;
-                    else if (attendance[i, j] == "A") absent++;
-                    else if (attendance[i, j] == "E") excused++;
+                    var status = attendance.Records[i, j];
+                    if (status == AttendanceStatus.P) present++;
+                    else if (status == AttendanceStatus.A) absent++;
+                    else if (status == AttendanceStatus.E) excused++;
                 }
 
-                double percentage = (double)present / attendance.GetLength(1) * 100;
+                double percentage = (double)present / 5 * 100;
 
                 string remark =
                     percentage >= 100 ? "Excellent" :
@@ -31,27 +32,26 @@ namespace attendanceAppService
                     percentage >= 50 ? "Warning" :
                     "Critical";
 
-                Console.WriteLine((i + 1) + ". " + students[i]);
-                Console.WriteLine("Present: " + present);
-                Console.WriteLine("Absent: " + absent);
-                Console.WriteLine("Excused: " + excused);
+                Console.WriteLine($"{i + 1}. ID: {students[i].Id} | {students[i].Name}");
+                Console.WriteLine($"Present: {present} | Absent: {absent} | Excused: {excused}");
                 Console.WriteLine("Rate: " + percentage.ToString("F2") + "%");
                 Console.WriteLine("Remark: " + remark);
                 Console.WriteLine("--------------------");
             }
         }
 
-        public void DisplaySummary(string[,] attendance)
+        public void DisplaySummary(AttendanceRecord attendance)
         {
             int totalPresent = 0, totalAbsent = 0, totalExcused = 0;
 
-            for (int i = 0; i < attendance.GetLength(0); i++)
+            for (int i = 0; i < 100; i++)
             {
-                for (int j = 0; j < attendance.GetLength(1); j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    if (attendance[i, j] == "P") totalPresent++;
-                    else if (attendance[i, j] == "A") totalAbsent++;
-                    else if (attendance[i, j] == "E") totalExcused++;
+                    var status = attendance.Records[i, j];
+                    if (status == AttendanceStatus.P) totalPresent++;
+                    else if (status == AttendanceStatus.A) totalAbsent++;
+                    else if (status == AttendanceStatus.E) totalExcused++;
                 }
             }
 

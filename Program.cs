@@ -1,8 +1,6 @@
-﻿/*
- STUDENTS ATTENDANCE,STUDENTS SUMMARY.
- */
-using System;
-using System.Collections.Generic;
+﻿using System;
+using attendanceDataService;
+using attendanceAppService;
 
 namespace attendance
 {
@@ -10,103 +8,75 @@ namespace attendance
     {
         static void Main()
         {
+            DataService data = new DataService();
+            AppService app = new AppService();
+            bool running = true;
 
-            //DINI-DEFINE ANG LISTA SA MGA STUDENTS AND ANG 2D ARRAY PARA SA ATTENDANCE NILA.
-            List<string> students = new List<string>()
+            while (running)
             {
-"Ralph Monzon","Brix Sochaco","Manu Masangkay","Jen Villareal","Josh Dator","Gege Graban","Abby Almadin","Laurent Dimapelis","Eichi Aquino","Rave Mancao",
-"Mitch Pichi","Shielo Resaba","Keichiro Shin","Jewell Gestoso","Usher Magbanua"
-            };
+                Console.WriteLine("\n==============================");
+                Console.WriteLine(" STUDENT ATTENDANCE SYSTEM ");
+                Console.WriteLine("==============================");
+                Console.WriteLine("1 Add Student");
+                Console.WriteLine("2 Update Student");
+                Console.WriteLine("3 Delete Student");
+                Console.WriteLine("4 View Attendance");
+                Console.WriteLine("5 View Summary");
+                Console.WriteLine("6 Exit");
+                Console.Write("Choose option: ");
 
-            //DINI-DEFINE ANG ATTENDANCE NG BAWAT STUDENT SA BAWAT ARAW, GINAMIT ANG "P" PARA SA PRESENT, "A" PARA SA ABSENT, AND "E" PARA SA EXCUSED.
-            string[,] attendance ={
-
-               { "P","P","A","E","E" },
-               { "P","A","P","P","P" },
-               { "A","P","P","E","P" },
-               { "P","P","P","P","P" },
-               { "P","P","P","E","P" },
-               { "P","P","P","P","A" },
-               { "P","P","E","E","P"},
-               { "P","P","P","P","P"},
-               { "P","P","A","P","E"},
-               { "P","P","P","E","P"},
-               { "E","E","P","P","P"},
-               { "P","P","A","P","P"},
-               { "P","P","P","P","P"},
-               { "P","A","E","P","P"},
-               { "P","A","A","A","P"},
-             };
-
-            DisplayWeeklyPerStudent(students, attendance);
-            DisplayOverallSummary(students,attendance);
-        }
-
-        //DINI-DISPLAY NYA ANG ATTENDANCE NG BAWAT STUDENT SA BAWAT ARAW AND CALCULATE ANG PRESENT, ABSENT, & EXCUSED.
-        static void DisplayWeeklyPerStudent(List<string> students, string[,] attendance)
-        {
-            Console.WriteLine("RAVE'S UNIVERSITY BIÑAN CAMPUS\n");
-            Console.WriteLine("| WEEKLY ATTENDANCE PER STUDENT |");
-            Console.WriteLine("---------------------------------\n");
-
-            for (int i = 0; i < students.Count; i++)
-            {
-                int present = 0, absent = 0, excused = 0;
-
-                for (int j = 0; j < attendance.GetLength(1); j++)
+                if (!int.TryParse(Console.ReadLine(), out int choice))
                 {
-                    if (attendance[i, j] == "P") { present++; }
-                    else if (attendance[i, j] == "A") { absent++; }
-                    else if (attendance[i, j] == "E") { excused++; }
+                    Console.WriteLine("Invalid input.");
+                    continue;
                 }
 
-                //KINI- CALCULATE ANG PERCENTAGE NG ATTENDANCE NG BAWAT STUDENT AND DETERMINE ANG REMARKS BASED ON THE PERCENTAGE.
-                double percentage = (double)present / attendance.GetLength(1) * 100;
-                  string remark = percentage switch
-                    {
-                        >= 100 => "Excellent",
-                        >= 75 => "Good",
-                        >= 50 => "Warning",
-                        _ => "Critical"
-                    };
-
-                    Console.WriteLine((i + 1) + ". " + students[i]);
-                    Console.WriteLine("Present: " + present);
-                    Console.WriteLine("Absent: " + absent);
-                    Console.WriteLine("Excused: " + excused);
-
-
-                //DINI-DISPLAY NYA ANG PERCENTAGE AND REMARKS NG BAWAT STUDENT.
-                Console.WriteLine("Rate: " + percentage.ToString("F2") + "%");
-                Console.WriteLine("Remark: " + remark);
-                Console.WriteLine("--------------------");
-
-                }
-            }
-
-        //KINOKOMPYLE NYA ANG TOTAL PRESENT, ABSENT, AND EXCUSED NG LAHAT NG STUDENTS PARA SA OVERALL SUMMARY.
-        static void DisplayOverallSummary(List<String> students, String[,] attendance)
-            {
-                int totalPresent = 0, totalAbsent = 0, totalExcused = 0;
-
-                for (int i = 0; i < attendance.GetLength(0); i++)
+                switch (choice)
                 {
-                    for (int j = 0; j < attendance.GetLength(1); j++)
-                    {
-                        if (attendance[i, j] == "P") totalPresent++;
-                        else if (attendance[i, j] == "A") totalAbsent++;
-                        else if (attendance[i, j] == "E") totalExcused++;
-                    }
+                    case 1:
+                        Console.Write("Enter Student Name: ");
+                        string name = Console.ReadLine();
+                        data.AddStudent(name);
+                        break;
+
+                    case 2:
+                        Console.Write("Enter Student ID to update: ");
+                        if (int.TryParse(Console.ReadLine(), out int uid))
+                        {
+                            Console.Write("Enter new name: ");
+                            string uname = Console.ReadLine();
+                            data.UpdateStudent(uid, uname);
+                        }
+                        else
+                            Console.WriteLine("Invalid ID.");
+                        break;
+
+                    case 3:
+                        Console.Write("Enter Student ID to delete: ");
+                        if (int.TryParse(Console.ReadLine(), out int did))
+                            data.DeleteStudent(did);
+                        else
+                            Console.WriteLine("Invalid ID.");
+                        break;
+
+                    case 4:
+                        app.DisplayWeekly(data.Students, data.Attendance);
+                        break;
+
+                    case 5:
+                        app.DisplaySummary(data.Attendance);
+                        break;
+
+                    case 6:
+                        running = false;
+                        Console.WriteLine("Exiting system...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
                 }
-
-            //DINI-DISPLAY NYA ANG OVERALL SUMMARY NG ATTENDANCE.
-            Console.WriteLine("\n| OVERALL ATTENDANCE SUMMARY |");
-                Console.WriteLine("------------------------------\n");
-                Console.WriteLine("Total Present: " + totalPresent);
-                Console.WriteLine("Total Absent: " + totalAbsent);
-                Console.WriteLine("Total Excused: " + totalExcused);
-
             }
         }
     }
-
+}
