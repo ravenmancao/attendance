@@ -1,0 +1,28 @@
+﻿[
+    {
+        "Id": 12,
+        "Name": "Brix Sochaco",
+        "Rate": 20,
+        "Remark": "Critical",
+        "Attendance": [
+            1,
+            2,
+            2,
+            0,
+            1
+        ]
+    },
+    {
+        "Id": 13,
+        "Name": "Ralph Monzon",
+        "Rate": 20,
+        "Remark": "Critical",
+        "Attendance": [
+            2,
+            0,
+            2,
+            2,
+            2
+        ]
+    }
+]

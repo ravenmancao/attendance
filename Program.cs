@@ -20,7 +20,7 @@ namespace attendance
                 Console.WriteLine("1 Add Student");
                 Console.WriteLine("2 Update Student");
                 Console.WriteLine("3 Delete Student");
-                Console.WriteLine("4 View Attendance");
+                Console.WriteLine("4 View Weekly Attendance");
                 Console.WriteLine("5 View Summary");
                 Console.WriteLine("6 Exit");
                 Console.Write("Choose option: ");
@@ -35,17 +35,17 @@ namespace attendance
                 {
                     case 1:
                         Console.Write("Enter Student Name: ");
-                        string name = Console.ReadLine();
-                        data.AddStudent(name);
+                        string studentName = Console.ReadLine() ?? "";
+                        data.AddStudent(studentName);
                         break;
 
                     case 2:
                         Console.Write("Enter Student ID to update: ");
-                        if (int.TryParse(Console.ReadLine(), out int uid))
+                        if (int.TryParse(Console.ReadLine(), out int updateId))
                         {
                             Console.Write("Enter new name: ");
-                            string uname = Console.ReadLine();
-                            data.UpdateStudent(uid, uname);
+                            string newStudentName = Console.ReadLine() ?? "";
+                            data.UpdateStudent(updateId, newStudentName);
                         }
                         else
                             Console.WriteLine("Invalid ID.");
@@ -53,18 +53,18 @@ namespace attendance
 
                     case 3:
                         Console.Write("Enter Student ID to delete: ");
-                        if (int.TryParse(Console.ReadLine(), out int did))
-                            data.DeleteStudent(did);
+                        if (int.TryParse(Console.ReadLine(), out int deleteId))
+                            data.DeleteStudent(deleteId);
                         else
                             Console.WriteLine("Invalid ID.");
                         break;
 
                     case 4:
-                        app.DisplayWeekly(data.Students, data.Attendance);
+                        app.DisplayWeekly(data.Students);
                         break;
 
                     case 5:
-                        app.DisplaySummary(data.Attendance);
+                        app.DisplaySummary(data.Students);
                         break;
 
                     case 6:

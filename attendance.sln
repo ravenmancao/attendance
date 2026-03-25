@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.4.11605.240 stable
+VisualStudioVersion = 18.4.11605.240
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attendance", "attendance.csproj", "{245A6724-CA25-4AFA-BB8B-F04A72D4D1A7}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attendanceDataService", "..\attendanceDataService\attendanceDataService.csproj", "{89EEE4B5-849D-44AB-886C-AE6FE4678F1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attendanceAppService", "..\attendanceAppService\attendanceAppService.csproj", "{592BA689-CADE-4B60-BB8B-17BDF2AF76A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyForm", "..\MyForm\MyForm.csproj", "{81D68157-E10A-430C-95C9-376B2324F9BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{592BA689-CADE-4B60-BB8B-17BDF2AF76A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{592BA689-CADE-4B60-BB8B-17BDF2AF76A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{592BA689-CADE-4B60-BB8B-17BDF2AF76A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81D68157-E10A-430C-95C9-376B2324F9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81D68157-E10A-430C-95C9-376B2324F9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81D68157-E10A-430C-95C9-376B2324F9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81D68157-E10A-430C-95C9-376B2324F9BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
