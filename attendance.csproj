@@ -8,6 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="attendanceAppService\**" />
+    <Compile Remove="attendanceDataService\**" />
+    <Compile Remove="AttendanceModels\**" />
+    <EmbeddedResource Remove="attendanceAppService\**" />
+    <EmbeddedResource Remove="attendanceDataService\**" />
+    <EmbeddedResource Remove="AttendanceModels\**" />
+    <None Remove="attendanceAppService\**" />
+    <None Remove="attendanceDataService\**" />
+    <None Remove="AttendanceModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\attendanceAppService\attendanceAppService.csproj" />
     <ProjectReference Include="..\attendanceDataService\attendanceDataService.csproj" />
     <ProjectReference Include="..\AttendanceModels\AttendanceModels.csproj" />
@@ -17,6 +29,10 @@
     <None Update="students.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="data\" />
   </ItemGroup>
 
 </Project>

@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attendanceDataService", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attendanceAppService", "..\attendanceAppService\attendanceAppService.csproj", "{592BA689-CADE-4B60-BB8B-17BDF2AF76A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyForm", "..\MyForm\MyForm.csproj", "{81D68157-E10A-430C-95C9-376B2324F9BA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{592BA689-CADE-4B60-BB8B-17BDF2AF76A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{592BA689-CADE-4B60-BB8B-17BDF2AF76A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{592BA689-CADE-4B60-BB8B-17BDF2AF76A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81D68157-E10A-430C-95C9-376B2324F9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81D68157-E10A-430C-95C9-376B2324F9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81D68157-E10A-430C-95C9-376B2324F9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81D68157-E10A-430C-95C9-376B2324F9BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
